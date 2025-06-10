@@ -1,0 +1,14 @@
+name: Stage the app
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # 后续步骤将在后续活动中添加
